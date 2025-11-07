@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Cricket Scores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .score-item {
+            background-color: #e9ecef;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 15px;
+        }
+        .score-item h2 {
+            margin-top: 0;
+            color: #007bff;
+            font-size: 1.2em;
+        }
+        .score-item p {
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+        .score-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .score-item a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: #dc3545;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Live Cricket Scores</h1>
+        {% if scores %}
+            {% for score in scores %}
+                <div class="score-item">
+                    <h2><a href="{{ score.link }}" target="_blank">{{ score.title }}</a></h2>
+                    <p>{{ score.description }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="error-message">No scores available or an error occurred.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
